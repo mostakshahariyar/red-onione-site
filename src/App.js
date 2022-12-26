@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Link from './component/Home/Link/Link';
 import Banner from './component/Home/Banner/Banner';
