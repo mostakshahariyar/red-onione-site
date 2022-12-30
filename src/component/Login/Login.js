@@ -30,10 +30,10 @@ const Login = () => {
                         <div className='login-from-children'>
                                 <h2 className='text-danger my-3 text-center'>Please Login</h2>
                                 <form onSubmit={handelSubmit}>
-                                        <input type="email" onBlur={handelEmail} placeholder='Enter your email' required />
+                                        <input className='input' type="email" onBlur={handelEmail} placeholder='Enter your email' required />
                                         <br />
                                         <br />
-                                        <input type="password" onBlur={handelPassword} placeholder='Password' name="" id="" required />
+                                        <input className='input' type="password" onBlur={handelPassword} placeholder='Password' name="" id="" required />
                                         <br />
                                         <br />
                                         <button className='btn-regular'>Login</button>
