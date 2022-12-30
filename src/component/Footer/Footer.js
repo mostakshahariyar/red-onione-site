@@ -38,7 +38,7 @@ const Footer = () => {
                                 </div>
                         </div>
                         <div className="d-md-flex d-block mx-0 justify-content-between mx-md-5 py-3">
-                                <div>
+                                <div className='mb-2'>
                                         <small className='text-secondary'>copyright © 2022 online food</small>
                                 </div>
                                 <div className="">

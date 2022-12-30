@@ -8,7 +8,7 @@ const Banner = () => {
         return (
                 <div className='banner-container'>
                         <div className="position-absolute w-100 h-50 d-flex flex-column justify-content-center align-items-center">
-                                <h1>Best food waiting for your belly</h1>
+                                <h1 className='text-center'>Best food waiting for your belly</h1>
                                 <InputGroup className="w-50 rounded-5">
                                 <Form.Control
                                 style={{width: "50%"}}
