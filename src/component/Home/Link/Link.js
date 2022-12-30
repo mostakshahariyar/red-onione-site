@@ -31,10 +31,10 @@ const Link = () => {
                         />
                     </Navbar.Text>
                     <Navbar.Text>
-                    <Button variant='light' className="pointer square text-dark rounded-5 px-3 py-2 mx-2 ">Login</Button>
+                    <Button variant='light' className="pointer square text-dark rounded-5 px-md-3 py-md-2 mx-md-2 m-0">Login</Button>
                     </Navbar.Text>
                     <Navbar.Text>
-                        <Button variant='danger' className="pointer square text-light rounded-5 px-3 py-2 mx-2 ">Sign up</Button>
+                        <Button variant='danger' className="pointer square text-light rounded-5 px-3 py-2 mx-2">Sign up</Button>
                     </Navbar.Text>
                   </Navbar.Collapse>
                 </Container>
