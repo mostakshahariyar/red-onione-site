@@ -34,7 +34,7 @@ const Login = () => {
                         <div className='login-from-children'>
                                 <h2 className='text-danger my-3 text-center'>Please Login</h2>
                                 <form onSubmit={handelSubmit}>
-                                        <input className='input' type="email" onBlur={handelEmail} placeholder='Enter your email' required />
+                                        <input className='input' type="email" onBlur={handelEmail} placeholder='Email' required />
                                         <br />
                                         <br />
                                         <input className='input' type="password" onBlur={handelPassword} placeholder='Password' name="" id="" required />
@@ -48,7 +48,10 @@ const Login = () => {
                                         <button className='btn-regular'
                                         onClick={signInUsingGoogle}
                                         >Google sign in</button>
-                                        <p className='text-danger link-text mt-1'>You have no account? <Link style={{ textDecoration: "none", color: "blue" }} to='/signup'>Create account</Link></p>
+                                        <Link style={{ textDecoration: "none"}}  to='/signup'>
+                                        <p className='text-danger link-text mt-1'>You have no account
+                                        </p>
+                                        </Link>
                                 </div>
                         </div>
                 </div>

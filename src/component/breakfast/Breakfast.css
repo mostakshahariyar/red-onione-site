@@ -1,0 +1,28 @@
+.foods-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 1rem;
+        justify-items: center;
+        /* border: 0; */
+}
+
+.food-card:hover {
+        box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.173);
+        transition: .3s ease-in;
+}
+@media only screen and (max-width: 1090px) {
+        .foods-container{
+                grid-template-columns: repeat(2, auto);
+                justify-items: center;
+                align-items: center;
+                /* background: red; */
+        }
+}
+@media screen and (max-width: 765px) {
+        .foods-container{
+                grid-template-columns: none;
+                justify-items: center;
+                align-items: center;
+                /* background: red; */
+        }
+}
