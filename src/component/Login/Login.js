@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import "../SignUp/Signup.css"
 import { Link } from 'react-router-dom';
 import logo from "../../image/logo2.png"
+import useAuth from '../hooks/useAuth';
 
 const Login = () => {
+        const {user, signInUsingGoogle} = useAuth();
+        console.log(user);
         const [email, setEmail] = useState();
         const [password, setPassword] = useState();
 
+        
         const handelEmail = e => {
                 const emailValue = e.target.value;
                 setEmail(emailValue);
@@ -42,9 +46,9 @@ const Login = () => {
                                 </form>
                                 <div>
                                         <button className='btn-regular'
-                                        //onClick={googleLogin}
+                                        onClick={signInUsingGoogle}
                                         >Google sign in</button>
-                                        <p className='text-danger mt-1'>You have no account? <Link style={{ textDecoration: "none", color: "blue" }} to='/signup'>Create account</Link></p>
+                                        <p className='text-danger link-text mt-1'>You have no account? <Link style={{ textDecoration: "none", color: "blue" }} to='/signup'>Create account</Link></p>
                                 </div>
                         </div>
                 </div>

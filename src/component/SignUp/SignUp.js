@@ -40,7 +40,7 @@ const SignUp = () => {
                 </form>
                 <div>
 
-                    <p className='text-danger'>Already register? <Link style={{ textDecoration: "none", color: "blue" }} to='/login'>Login</Link></p>
+                    <p className='text-danger link-text'>Already have an account? <Link style={{ textDecoration: "none", color: "blue" }} to='/login'>Login</Link></p>
                 </div>
             </div>
         </div>
