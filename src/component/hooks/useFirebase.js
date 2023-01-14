@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import initializauthentication from '../Firebase/firebase.init';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 initializauthentication();
 
 const useFirebase = () => {
+        const navigate = useNavigate();
         const [user, setUsers] = useState({});
         const [isLogin, setIsLogin] = useState(true);
         const [errors, setErrors] = useState({});
@@ -21,11 +23,13 @@ const useFirebase = () => {
 
 
         }
-        const signInUser = (email, password) => {
+        const signUpNewUser = (email, password) => {
                 createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                                 // Signed in 
                                 const user = userCredential.user;
+                                console.log(user);
+                                navigate("/home")
                                 // ...
                         })
                         .catch((error) => {
@@ -34,6 +38,20 @@ const useFirebase = () => {
                                 // ..
                         });
         }
+        const signInUser = (email, password)=>{
+                signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        navigate("/home")
+                        // ...
+                      })
+                      .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                      });
+        }
+        
 
         // observe user state change 
         useEffect(() => {
@@ -66,6 +84,7 @@ const useFirebase = () => {
                 errors,
                 logOut,
                 isLogin,
+                signUpNewUser, 
                 signInUser
         }
 };

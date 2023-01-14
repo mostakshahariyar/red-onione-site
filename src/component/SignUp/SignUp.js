@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './Signup.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import logo from "../../image/logo2.png"
+import useAuth from '../hooks/useAuth';
 
 const SignUp = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const {signUpNewUser} = useAuth();
 
     const handelEmail = e => {
         const emailValue = e.target.value;
@@ -17,9 +19,8 @@ const SignUp = () => {
     };
     const handelSubmit = e => {
         e.preventDefault();
-        //signinUser(email, password);
+        signUpNewUser(email, password);
         console.log(email, password);
-        // navigate("/home");
 
     }
     return (
@@ -42,7 +43,7 @@ const SignUp = () => {
                     <input className="input" type="password" onBlur={handelPassword} placeholder='Confirm Password' name="" id="" required />
                     <br />
                     <br />
-                    <button className='btn-regular'>Sign up</button>
+                    <button type='submit' className='btn-regular'>Sign up</button>
                 </form>
                 <div>
 

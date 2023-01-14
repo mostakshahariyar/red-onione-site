@@ -5,7 +5,7 @@ import logo from "../../image/logo2.png"
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
-        const {user, signInUsingGoogle} = useAuth();
+        const {user, signInUsingGoogle, signInUser} = useAuth();
         console.log(user);
         const [email, setEmail] = useState();
         const [password, setPassword] = useState();
@@ -21,10 +21,8 @@ const Login = () => {
         };
         const handelSubmit = e => {
                 e.preventDefault();
-                //signinUser(email, password);
+                signInUser(email, password);
                 console.log(email, password);
-                // navigate("/home");
-
         }
         return (
                 <div className='login-from'>
@@ -34,10 +32,10 @@ const Login = () => {
                         <div className='login-from-children'>
                                 <h2 className='text-danger my-3 text-center'>Please Login</h2>
                                 <form onSubmit={handelSubmit}>
-                                        <input className='input' type="email" onBlur={handelEmail} placeholder='Email' required />
+                                        <input className='input' type="email" onClick={handelEmail} placeholder='Email' required />
                                         <br />
                                         <br />
-                                        <input className='input' type="password" onBlur={handelPassword} placeholder='Password' name="" id="" required />
+                                        <input className='input' type="password" onClick={handelPassword} placeholder='Password' name="" id="" required />
                                         <br />
                                         <br />
                                         <button className='btn-regular'>Login</button>
