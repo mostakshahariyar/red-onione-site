@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import'../../SignUp/Signup.css'
+import { AiOutlineUser } from "react-icons/ai";
 
 
 const Link = () => {
@@ -51,7 +52,7 @@ const Link = () => {
           </Navbar.Text>
           <Navbar.Text>
             {
-              user.email ? <img  style={{width: "30px"}} src={user.photoURL} className='rounded-circle user-image'/> : <Button onClick={handelSignUp} variant='danger' className="pointer square text-light rounded-5 px-3 py-2 mx-2">Sign up</Button>
+              user.email && user?.photoURL  ? <img  style={{width: "30px"}} src={user?.photoURL } className='rounded-circle user-image'/> : user.email && !user?.photoURL  ? <AiOutlineUser /> :  <Button onClick={handelSignUp} variant='danger' className="pointer square text-light rounded-5 px-3 py-2 mx-2">Sign up</Button>
             }
           </Navbar.Text>
         </Navbar.Collapse>
