@@ -6,3 +6,12 @@
         background-repeat: no-repeat;
         background-size: cover;
 }
+.form-control{
+        border: none;
+        border-radius: 5rem;
+}
+.input-group-text{
+        border: none;
+        border-radius: 5rem;
+        background-color: #ffffff;
+}
