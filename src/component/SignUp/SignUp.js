@@ -7,7 +7,10 @@ import useAuth from '../hooks/useAuth';
 const SignUp = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [rePassword, setRePassword] = useState();
+    const [error, setError] = useState();
     const {signUpNewUser} = useAuth();
+
 
     const handelEmail = e => {
         const emailValue = e.target.value;
@@ -17,12 +20,24 @@ const SignUp = () => {
         const passwordValue = e.target.value;
         setPassword(passwordValue);
     };
-    const handelSubmit = e => {
-        e.preventDefault();
-        signUpNewUser(email, password);
-        console.log(email, password);
-
+    const RehandelPassword = e => {
+        const passwordValue = e.target.value;
+        setRePassword(passwordValue);
+    };
+    if( password === rePassword )
+       {
+        const handelSubmit = e => {
+            e.preventDefault();
+            signUpNewUser(email, password);
+            // console.log(email, password);
+    
+        }
+       }
+    
+    else{
+        console.log("password are not same");
     }
+    console.log(error);
     return (
         <div className='login-from'>
                 <Link to="/">
@@ -30,17 +45,17 @@ const SignUp = () => {
                 </Link>
             <div className='login-from-children'>
                 <h2 className='text-danger my-3 text-center'>Sign up</h2>
-                <form onSubmit={handelSubmit}>
+                <form>
                     <input className="input" type="text"placeholder='Name' required />
                     <br />
                     <br />
-                    <input className="input" type="email" onBlur={handelEmail} placeholder='Email' required />
+                    <input className="input" type="email" onChange={handelEmail} placeholder='Email' required />
                     <br />
                     <br />
-                    <input className="input" type="password" onBlur={handelPassword} placeholder='Password' required />
+                    <input className="input" type="password" onChange={handelPassword} placeholder='Password' required />
                     <br />
                     <br />
-                    <input className="input" type="password" onBlur={handelPassword} placeholder='Confirm Password' name="" id="" required />
+                    <input className="input" type="password" onChange={RehandelPassword} placeholder='Confirm Password' name="" id="" required />
                     <br />
                     <br />
                     <button type='submit' className='btn-regular'>Sign up</button>

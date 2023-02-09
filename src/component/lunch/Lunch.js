@@ -3,13 +3,13 @@ import Card from 'react-bootstrap/Card';
 
 
 const Lunch = () => {
-        const [breakFast, setBreakfast] = useState([])
+        const [lunch, setLunch] = useState([])
 
         useEffect(() => {
 
                 fetch('https://raw.githubusercontent.com/mostakshahariyar/red-onione_data/main/dinner.json')
                         .then(res => res.json())
-                        .then(data => setBreakfast(data))
+                        .then(data => setLunch(data))
         }, [])
         return (
                 <div>
@@ -17,7 +17,7 @@ const Lunch = () => {
                 <div>
                         <div className='d-grid justify-content-center aline-items-center foods-container'>
                                 {
-                                        breakFast?.map(item =>
+                                        lunch?.map(item =>
                                         (
                                                 <Card
                                                         key={item?.id}

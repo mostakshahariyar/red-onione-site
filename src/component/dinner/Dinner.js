@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 
 const Dinner = () => {
-        const [breakFast, setBreakfast] = useState([])
+        const [dinner, setDinner] = useState([])
 
         useEffect(() => {
 
                 fetch('https://raw.githubusercontent.com/mostakshahariyar/red-onione_data/main/dinner.json')
                         .then(res => res.json())
-                        .then(data => setBreakfast(data))
+                        .then(data => setDinner(data))
         }, [])
         return (
                 <div>
@@ -16,7 +16,7 @@ const Dinner = () => {
                         <div>
                                 <div className='d-grid justify-content-center aline-items-center foods-container'>
                                         {
-                                                breakFast?.map(item =>
+                                                dinner?.map(item =>
                                                 (
                                                         <Card
                                                                 key={item?.id}
