@@ -9,9 +9,34 @@ const SignUp = () => {
     const [password, setPassword] = useState();
     const [rePassword, setRePassword] = useState();
     const [error, setError] = useState();
-    const {signUpNewUser} = useAuth();
+    const { signUpNewUser } = useAuth();
 
+    const validateEmail = (email) => {
+        return email.match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+      };
 
+    const handelSubmit = e => {
+        e.preventDefault();
+        if (validateEmail(email)) {
+            if (password != rePassword) {
+                setError("password not same.");
+                return;
+           }
+           else if(password.length<6)
+           {
+            setError("password must be at least 6 character.");
+            return;
+           }
+           signUpNewUser(email, password);
+        }
+        else
+        {
+            setError("email is not valid");
+        }
+        
+    }
     const handelEmail = e => {
         const emailValue = e.target.value;
         setEmail(emailValue);
@@ -24,29 +49,16 @@ const SignUp = () => {
         const passwordValue = e.target.value;
         setRePassword(passwordValue);
     };
-    if( password === rePassword )
-       {
-        const handelSubmit = e => {
-            e.preventDefault();
-            signUpNewUser(email, password);
-            // console.log(email, password);
-    
-        }
-       }
-    
-    else{
-        console.log("password are not same");
-    }
-    console.log(error);
+
     return (
         <div className='login-from'>
-                <Link to="/">
-                    <img className='img-fluid px-3' style={{ width: "25rem" }} src={logo} alt="logo" />
-                </Link>
+            <Link to="/">
+                <img className='img-fluid px-3' style={{ width: "25rem" }} src={logo} alt="logo" />
+            </Link>
             <div className='login-from-children'>
                 <h2 className='text-danger my-3 text-center'>Sign up</h2>
                 <form>
-                    <input className="input" type="text"placeholder='Name' required />
+                    <input className="input" type="text" placeholder='Name' required />
                     <br />
                     <br />
                     <input className="input" type="email" onChange={handelEmail} placeholder='Email' required />
@@ -56,14 +68,17 @@ const SignUp = () => {
                     <br />
                     <br />
                     <input className="input" type="password" onChange={RehandelPassword} placeholder='Confirm Password' name="" id="" required />
+                    <div className='text-danger'>
+                        {error}
+                    </div>
                     <br />
                     <br />
-                    <button type='submit' className='btn-regular'>Sign up</button>
+                    <button type='submit' onClick={handelSubmit} className='btn-regular'>Sign up</button>
                 </form>
                 <div>
 
-                    <Link style={{ textDecoration: "none"}} to='/login'>
-                    <p className='text-danger link-text'>Already have an account</p>    
+                    <Link style={{ textDecoration: "none" }} to='/login'>
+                        <p className='text-danger link-text'>Already have an account</p>
                     </Link>
                 </div>
             </div>
